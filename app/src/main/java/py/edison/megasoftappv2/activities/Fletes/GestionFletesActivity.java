@@ -25,7 +25,10 @@ import java.util.List;
 import java.util.Locale;
 
 import py.edison.megasoftappv2.R;
+import py.edison.megasoftappv2.adapters.ClientAdapter;
+import py.edison.megasoftappv2.adapters.ConductorAdapter;
 import py.edison.megasoftappv2.adapters.FleteAdapter;
+import py.edison.megasoftappv2.entidades.Conductor;
 import py.edison.megasoftappv2.entidades.Flete;
 import py.edison.megasoftappv2.servicios.FleteService;
 
@@ -51,6 +54,15 @@ public class GestionFletesActivity extends AppCompatActivity {
         fleteService = new FleteService();
         inicializarVistas();
         cargarFletes();
+        // Para clientes (si hay un RecyclerView)
+        ClientAdapter clientAdapter = new ClientAdapter(ClientAdapter);
+        android.app.AlertDialog.Builder recyclerViewClientes;
+        recyclerViewClientes.setAdapter(clientAdapter);
+
+// Para conductores (si aplica)
+        List<Conductor> listaConductores;
+        ConductorAdapter conductorAdapter = new ConductorAdapter(listaConductores);
+        recyclerViewConductores.setAdapter(conductorAdapter);
     }
 
     private void inicializarVistas() {

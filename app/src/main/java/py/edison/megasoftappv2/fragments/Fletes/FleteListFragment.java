@@ -28,6 +28,7 @@ public class FleteListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_flete_list, container, false);
 
+
         RecyclerView recyclerView = view.findViewById(R.id.rvFletes);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

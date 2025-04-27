@@ -108,7 +108,7 @@ public class FleteAdapter extends RecyclerView.Adapter<FleteAdapter.FleteViewHol
     }
 
     static class FleteViewHolder extends RecyclerView.ViewHolder {
-        public Button btnEditar;
+        Button btnEditar; // <- Asegurar que existe en el layout XML (item_flete.xml)
         TextView tvOrigen, tvDestino, tvEstado, tvFecha;
 
         public FleteViewHolder(@NonNull View itemView) {
@@ -117,6 +117,7 @@ public class FleteAdapter extends RecyclerView.Adapter<FleteAdapter.FleteViewHol
             tvDestino = itemView.findViewById(R.id.tvDestino);
             tvEstado = itemView.findViewById(R.id.tvEstado);
             tvFecha = itemView.findViewById(R.id.tvFecha);
+            btnEditar = itemView.findViewById(R.id.btnEditar); // <- Inicializar
         }
     }
 

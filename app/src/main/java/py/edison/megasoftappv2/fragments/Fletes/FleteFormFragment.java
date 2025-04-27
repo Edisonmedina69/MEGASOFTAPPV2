@@ -6,10 +6,13 @@
     import android.view.ViewGroup;
     import android.widget.CheckBox;
     import android.widget.EditText;
+    import android.widget.Toast;
 
     import androidx.fragment.app.Fragment;
 
     import py.edison.megasoftappv2.R;
+    import py.edison.megasoftappv2.entidades.ConfiguracionTarifa;
+    import py.edison.megasoftappv2.entidades.Flete;
     import py.edison.megasoftappv2.servicios.FleteService;
 
     public class FleteFormFragment extends Fragment {
@@ -41,7 +44,30 @@
         }
 
         private void guardarFlete() {
-            // Validaciones y lógica de guardado
-            // Similar a tu CrearFleteActivity
+            if (validarCampos()) {
+                Flete nuevoFlete = new Flete();
+                nuevoFlete.setOrigen(etOrigen.getText().toString());
+                // ... (setear otros campos)
+
+                // Calcular tarifa automática
+                ConfiguracionTarifa tarifa = configuracionService.obtenerTarifaActual();
+                double precio = fleteService.calcularPrecioFlete(
+                        nuevoFlete.getDistancia(),
+                        nuevoFlete.getPeso(),
+                        tarifa,
+                        nuevoFlete.isUrgente()
+                );
+                nuevoFlete.setTarifa(precio);
+
+                fleteService.crearFlete(nuevoFlete, new FleteService.FleteCallback() {
+                    @Override
+                    public void onSuccess(Flete flete) {
+                        Toast.makeText(getContext(), "¡Flete creado!", Toast.LENGTH_SHORT).show();
+                        // Regresar a la lista
+                        getParentFragmentManager().popBackStack();
+                    }
+                    // ... manejo de errores
+                });
+            }
         }
     }

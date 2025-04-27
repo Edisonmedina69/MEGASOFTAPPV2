@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import py.edison.megasoftappv2.adapters.IncidenciasAdapter;
 import py.edison.megasoftappv2.databinding.ActivityDetalleFleteBinding;
 import py.edison.megasoftappv2.entidades.Flete;
 import py.edison.megasoftappv2.servicios.FleteService;
@@ -29,6 +30,9 @@ public class DetalleFleteActivity extends AppCompatActivity {
         cargarFlete(fleteId);
     }
 
+    private Object listaIncidencias;
+    IncidenciasAdapter incidenciasAdapter = new IncidenciasAdapter(listaIncidencias);
+recyclerViewIncidencias.setAdapter(incidenciasAdapter);
     private void configurarVistas() {
         binding.btnEditar.setOnClickListener(v -> {
             if (modoEdicion) {

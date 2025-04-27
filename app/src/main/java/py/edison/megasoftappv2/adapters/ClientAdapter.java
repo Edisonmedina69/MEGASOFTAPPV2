@@ -41,4 +41,36 @@ public class ClientAdapter extends RecyclerView.Adapter<ClientAdapter.ClientView
     public void setOnItemClickListener(ItemClickListener listener) {
         this.clickListener = listener;
     }
+
+    @NonNull
+    @Override
+    public ClientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_client, parent, false);
+        return new ClientViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ClientViewHolder holder, int position) {
+        Client client = clients.get(position);
+        holder.tvNombre.setText(client.getNombre());
+        holder.tvTelefono.setText(client.getTelefono());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (clickListener != null) clickListener.onItemClick(client);
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return clients != null ? clients.size() : 0;
+    }
+
+    public static class ClientViewHolder extends RecyclerView.ViewHolder {
+        TextView tvNombre, tvTelefono;
+        public ClientViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvNombre = itemView.findViewById(R.id.tvNombre);
+            tvTelefono = itemView.findViewById(R.id.tvTelefono);
+        }
+    }
 }
