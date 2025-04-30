@@ -2,7 +2,7 @@ package py.edison.megasoftappv2.entidades;
 
 import java.util.List;
 
-public class Flete {
+public class    Flete {
 
     // Estados posibles
     public static final String PENDIENTE = "PENDIENTE";

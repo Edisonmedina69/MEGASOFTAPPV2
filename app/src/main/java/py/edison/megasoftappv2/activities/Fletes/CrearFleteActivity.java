@@ -12,18 +12,18 @@ import py.edison.megasoftappv2.servicios.FleteService;
 
 public class CrearFleteActivity extends AppCompatActivity {
 
-    private ActivityCrearFleteBinding binding;
+   // private ActivityCrearFleteBinding binding;
     private FleteService fleteService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCrearFleteBinding.inflate(getLayoutInflater());
+       // binding = ActivityCrearFleteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         fleteService = new FleteService();
 
-        binding.btnGuardar.setOnClickListener(v -> {
+     /++   binding.btnGuardar.setOnClickListener(v -> {
             if (validarCampos()) {
                 guardarFlete();
             }

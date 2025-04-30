@@ -8,7 +8,17 @@ public class Client {
     private String telefono;
     private String direccion;
     private String identidad;
+    private String ruc;
     private List<String> historialFletes;
+
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
 
     public String getId() {
         return id;
